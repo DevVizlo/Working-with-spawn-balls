@@ -1,26 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnBall : MonoBehaviour
 {
-    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private BallDelete _ballPrefab;
 
     private float _timeSpawn = 2f;
     private float _timer;
 
     void Start()
     {
+        StartCoroutine(BallSpawn());
         _timer = _timeSpawn;
+        Instantiate(_ballPrefab);
     }
 
-    void Update()
+    private IEnumerator BallSpawn()
     {
-        _timer -= Time.deltaTime;
-        if (_timer <= 0) 
-        {
-            _timer = _timeSpawn;
-            Instantiate(_enemyPrefab, transform);
-        }
+            yield return new WaitForSeconds(_timeSpawn);
+            Instantiate(_ballPrefab, transform);
+        
     }
 }

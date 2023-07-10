@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class BallMovment : MonoBehaviour
 {
-    private const string AnimationPlayerRun = "Run";
 
     [SerializeField] private float _movment;
 
